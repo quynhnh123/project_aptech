@@ -1,0 +1,11 @@
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\bin\Debug\project_Employee_Management.exe.config
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\bin\Debug\project_Employee_Management.exe
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\bin\Debug\project_Employee_Management.pdb
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.csprojResolveAssemblyReference.cache
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.Properties.Resources.resources
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.csproj.GenerateResource.Cache
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.exe
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.pdb
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.Form1.resources
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.frmInfo.resources
+c:\users\janmonster\documents\visual studio 2015\Projects\project_Employee_Management\project_Employee_Management\obj\Debug\project_Employee_Management.frmLogin.resources
