@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,47 +13,64 @@ namespace project_Employee_Management
 {
     public partial class frmLogin : Form
     {
-        Employee_ManagementDataContext db;
+        //Employee_ManagementDataContext db;
+
         public frmLogin()
         {
             InitializeComponent();
-            db = new Employee_ManagementDataContext();
+            //db = new Employee_ManagementDataContext();
+            SqlConnection conn = ConnectDB.GetDBConnection();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //Kiểm tra tài khoản và mật khẩu
-            //tạo biến chứa tài khoản và mật khẩu
-            var user_Acc = db.tbNhanViens.SingleOrDefault(x => x.taikhoan.Equals(txtAccount.Text) && x.matkhau.Equals(txtPassword.Text));
-            if(user_Acc != null)//Đăng nhập đúng
+            SqlConnection conn = ConnectDB.GetDBConnection();
+            try
             {
-                //Lưu tài khoản 
-                if( chkRemember.Checked == true)
+                conn.Open();
+                string username = txtAccount.Text;
+                string password = txtPassword.Text;
+                string query = "SELECT taikhoan, matkhau FROM tbNhanVien WHERE taikhoan = '"+username+"' and matkhau ='"+password+"'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader data_conn = cmd.ExecuteReader();
+                //Kiểm tra tài khoản và mật khẩu
+                //tạo biến chứa tài khoản và mật khẩu
+               
+                if (data_conn.Read() == true)//Đăng nhập đúng
                 {
-                  
-                    Properties.Settings.Default.Username = user_Acc.taikhoan;
-                    Properties.Settings.Default.Password = user_Acc.matkhau;
-                    Properties.Settings.Default.Remember = true;
+                    //Lưu tài khoản 
+                    if (chkRemember.Checked == true)
+                    {
+
+                        Properties.Settings.Default.Username = username;
+                        Properties.Settings.Default.Password = password;
+                        Properties.Settings.Default.Remember = true;
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.Username = "";
+                        Properties.Settings.Default.Password = "";
+                        Properties.Settings.Default.Remember = false;
+                    }
+                    Properties.Settings.Default.Save();
+                    //Chuyển qua frmMenu
+                    frmMenu frm_Menu = new frmMenu();
+
+                    //mở frm Menu
+                    frm_Menu.frmLogin = this;
+                    frm_Menu.Show();
+                    //ẩn frm Login
+                    this.Hide();
+                    conn.Close();
                 }
                 else
                 {
-                    Properties.Settings.Default.Username = "";
-                    Properties.Settings.Default.Password = "";
-                    Properties.Settings.Default.Remember = false;
+                    MessageBox.Show("Kiểm tra lại tài khoản và mật khẩu", "Hệ thống cống rãnh", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                Properties.Settings.Default.Save();
-                //Chuyển qua frmMenu
-                frmMenu frm_Menu = new frmMenu();
-               
-                //mở frm Menu
-                frm_Menu.frmLogin = this;
-                frm_Menu.Show();
-                //ẩn frm Login
-                this.Hide();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Kiểm tra lại tài khoản và mật khẩu", "Hệ thống cống rãnh",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Kết nối thất bại");
             }
             
         }

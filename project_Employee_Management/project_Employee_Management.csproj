@@ -47,11 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee_Management.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Employee_Management.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="ConnectDB.cs" />
+    <Compile Include="Config_Connect.cs" />
     <Compile Include="frmEvaluation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,9 +99,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Employee_Management.dbml.layout">
-      <DependentUpon>Employee_Management.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="frmEvaluation.resx">
       <DependentUpon>frmEvaluation.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,11 +133,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Employee_Management.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Employee_Management.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
